@@ -8,14 +8,15 @@
   <script src="../../node_modules/chai/chai.js"></script>
   <script src="../../node_modules/sinon/pkg/sinon.js"></script>
   <script src="../../node_modules/wct-mocha/wct-mocha.js"></script>
-  <script type="module" src="../../src/cure-me/doctor-login.js"></script>
+  <script type="module" src="../../src/udaan-app/admin-login.js"></script>
   <link rel="import" href="../../config.html">
+
 </head>
 
 <body>
   <test-fixture id="loginFixture">
     <template>
-      <doctor-login></doctor-login>
+      <admin-login></admin-login>
     </template>
   </test-fixture>
   <script>
@@ -36,212 +37,42 @@
           expect(mobileNumber).to.be.exist;
         });
 
-        // it('should render the password input field', () => {
-        //   let password = elementShadowRoot.querySelector('#password')
-        //   expect(password).to.be.exist;
-        // });
-        it('should render the request otp button', () => {
-          let otpBtn = elementShadowRoot.querySelector('#requestOtp')
-          expect(otpBtn).to.be.exist;
-          expect(otpBtn.innerHTML).to.be.equal('Request Otp');
+        it('should render the password input field', () => {
+          let password = elementShadowRoot.querySelector('#password')
+          expect(password).to.be.exist;
+        });
+        it('should render the login button', () => {
+          let loginBtn = elementShadowRoot.querySelector('#loginBtn')
+          expect(loginBtn).to.be.exist;
         });
         describe('AND when button is clicked', () => {
-          let requestOtp;
-          let sendOtp;
+          let sinonSpy;
+          let loginBtn;
           beforeEach(() => {
-            requestOtp = elementShadowRoot.querySelector('#requestOtp');
-            sendOtp = sinon.spy();
-            requestOtp.addEventListener('click', sendOtp);
-
+            loginBtn = elementShadowRoot.querySelector('#loginBtn');
+            sinonSpy = sinon.spy();
+            loginBtn.addEventListener('click', sinonSpy);
           });
-          it('should call _sendOtp() method once', function (done) {
+          it('should call _signIn() method once', function (done) {
             flush(function () {
-              element.$.mobileNumber.value = '';
-              requestOtp.click();
-              expect(sendOtp.callCount).to.be.equal(1)
-              expect(element.visible).to.be.exist;
+              loginBtn.click();
+              expect(loginBtn.callCount).to.be.equal(1)
               done();
             })
           });
-          it('should check mobile no. is of 10 digits or not', (done) => {
+          it('should validate the form', (done) => {
             flush(function () {
               element.$.mobileNumber.value = '9876543210';
-              requestOtp.click();
-              // console.log(element.$.mobileNumber.value.toString().length);
-              // if (element.$.mobileNumber.value.toString().length==10) {
-              expect(element.visible).to.be.equal(true);
-              done();
-              //   console.log(element.visible);
-              // }
+              element.$.password.value='1234567'
+              loginBtn.click();
             })
           })
-          it('should render the resend otp button', () => {
-            let resendOtp = elementShadowRoot.querySelector('#resendOtp')
-            expect(resendOtp).to.be.exist;
-            expect(resendOtp.innerHTML).to.be.equal('Resend Otp');
-          })
-          it('should render the submit otp button', () => {
-            let submitOtp = elementShadowRoot.querySelector('#submit')
-            expect(submitOtp).to.be.exist;
-            expect(submitOtp.innerHTML).to.be.equal('Submit');
-          })
-          it('should render the otp div', () => {
-            let otpDiv = elementShadowRoot.querySelector('#otp')
-            expect(otpDiv).to.be.exist;
-          })
-        })
-        describe('AND when submit button is clicked', () => {
-          beforeEach(() => {
-            submit = elementShadowRoot.querySelector('#submit');
-            handleSubmit = sinon.spy();
-            submit.addEventListener('click', handleSubmit);
-            element.$.mobileNumber.value = Math.random();
-            submit.click();
-          });
-          it('should call _handleSubmit() method once', function () {
-            expect(handleSubmit.callCount).to.be.equal(1)
-          });
-        })
-        describe('AND when key up event is triggered', () => {
-          let onKeyEvent1;
-          beforeEach(() => {
-            input1 = elementShadowRoot.querySelector('#codeBox1');
-            onKeyEvent1 = sinon.spy();
-            input1.addEventListener('keyup', onKeyEvent1);
-            var event = new Event('keyup');
-            // Dispatch it.
-            input1.dispatchEvent(event);
-          });
-          it('should call onKeyEvent() method once', function () {
-            expect(onKeyEvent1.callCount).to.be.equal(1)
-          });
-          it('should check when index is not equal to 5', (done) => {
-            flush(function () {
-              input4 = elementShadowRoot.querySelector('#codeBox4');
-              input4.value=1
-              onKeyEvent4 = sinon.spy();
-              input4.addEventListener('keyup', onKeyEvent4);
-              var event = new KeyboardEvent('keyup');
-              // Dispatch it.
-              input4.dispatchEvent(event);
-              done();
-            })
-          })
-          it('should check for keycode=8', (done) => {
-            flush(function () {
-              input5 = elementShadowRoot.querySelector('#codeBox5');
-              input5.value=1
-              onKeyEvent5 = sinon.spy();
-              input5.addEventListener('keyup', onKeyEvent5);
-              var event = new KeyboardEvent('keyup', { which: 8, keyCode: 8 });
-              // Dispatch it.
-              input5.dispatchEvent(event);
-              done();
-            })
-          })
-        })
-        describe('AND when input is focussed', () => {
-          beforeEach(() => {
-            input1 = elementShadowRoot.querySelector('#codeBox1');
-            onFocusEvent1 = sinon.spy();
-            input1.addEventListener('focus', onFocusEvent1);
-            var event = new Event('focus');
-            // Dispatch it.
-            input1.dispatchEvent(event);
-          });
-          afterEach(() => {
-            sinon.restore();
-          });
-          it('should call onFocusEvent1() method once', function () {
-            expect(onFocusEvent1.callCount).to.be.equal(1)
-          });
-          it('should check when index is greater than 1', (done) => {
-            flush(function () {
-              input2 = elementShadowRoot.querySelector('#codeBox2');
-              onFocusEvent2 = sinon.spy();
-              input2.addEventListener('focus', onFocusEvent2);
-              var event = new Event('focus');
-              // Dispatch it.
-              input2.dispatchEvent(event);
-              done();
-            })
-          })
-        })
-        describe('ready must listen for custom-event', () => {
-          let loginStatus;
-          beforeEach(() => {
-            loginStatus = sinon.spy();
-            element.addEventListener('ajax-response', (e) => loginStatus(e))
-            var selectionFired = new CustomEvent("ajax-response", {
-              "detail": { "data": { "role": "DOCTOR", "message": "DOCTOR" } }
-            });
-            element.dispatchEvent(selectionFired)
-          })
-          it('should call _loginStatus() once', () => {
-            expect(loginStatus.callCount).to.be.equal(1)
-          })
+
+
+
+
         })
       })
-
-      // describe(' When submit button is clicked', function () {
-      //   let submitSpy, sinonSpy;
-      //   var ajax;
-      //   var request;
-      //   var server;
-      //   var responseHeaders = {
-      //     json: { 'Content-Type': 'application/json' }
-      //   };
-
-      //   beforeEach(function () {
-      //     sinonSpy = sinon.spy();
-      //     server = sinon.fakeServer.create();
-
-      //   });
-
-      //   afterEach(function () {
-      //     server.restore();
-      //   })
-
-      //   it('should call sinonSpy()', function (done) {
-      //     let btn = elementShadowRoot.querySelector('#loginBtn');
-      //     btn.addEventListener('click', sinonSpy);
-      //     element.mobileNumber = "9876543210";
-      //     element.password = 'muthu123';
-      //     element.action = 'login';
-
-      //     flush(function () {
-      //       btn.click();
-      //       expect(sinonSpy.callCount).to.be.equal(1);
-      //       done();
-      //     });
-      //   });
-
-      //   it('should respond with correct response', function (done) {
-      //     ajax = elementShadowRoot.querySelector("#ajax");
-      //     ajax._makeAjaxCall('POST', 'http://10.117.189.176:9092/forxtransfer/customers/login',null, 'login');
-      //     server.respondWith(
-      //       'POST',
-      //       'http://10.117.189.176:9092/forxtransfer/customers/login', [
-      //       200,
-      //       responseHeaders.json,
-      //       '[{name: 13123}]'
-      //     ]
-      //     );
-      //     flush(function () {
-      //       //console.log(request);
-      //       expect(request.response).to.be.ok;
-      //       server.respond();
-      //       done();
-      //     });
-
-      //     expect(request.response.success).to.be.equal(true);
-
-
-      //   });
-
-
-
-      // });
     });
   </script>
 </body>

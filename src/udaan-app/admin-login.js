@@ -43,7 +43,7 @@ class AdminLogin extends PolymerElement {
       <ajax-call id="ajax"></ajax-call>
       <iron-form id="form">
       <form>
-      <paper-input id="mobileNumber" error-message={{message}} required allowed-pattern=[0-9] minlength="10" maxlength="10" label="Enter Mobile Number"></paper-input>
+      <paper-input id="mobileNumber"  required allowed-pattern=[0-9] minlength="10" maxlength="10" label="Enter Mobile Number"></paper-input>
       <paper-input id="password"  required type="password" minlength="5" label="Password"></paper-input>
       <span>
       <paper-button on-click="_signIn" raised id="loginBtn">LogIn</paper-button></span>
