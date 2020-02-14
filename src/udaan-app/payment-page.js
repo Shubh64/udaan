@@ -30,7 +30,7 @@ class PaymentPage extends PolymerElement {
       margin: 20px auto 0;
       border: 1px solid #ddd;
       border-radius: 6px;
-      background-color: gold;
+      background-color: #95d3f5;
       box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, .10);
     }
     .form-header {
@@ -64,7 +64,7 @@ class PaymentPage extends PolymerElement {
   .month select,
   .year select {
       font-size: 14px;
-      font-weight: 100;
+      font-weight: 140;
       line-height: 20px;
   }
    
@@ -143,20 +143,13 @@ ul{
   font-weight:lighter;
 }
 #donationDetails{
-  width:900px;
-  height:700px;
-  margin:auto;
+  width:500px;
+  height:500px;
 }
   </style>
   <app-location route={{route}}></app-location>
   <ajax-call id="ajax"></ajax-call>
-     <iron-form id="form">
-      <form>
-      <paper-input id="donarName" required  label="Name"></paper-input>
-      <paper-input id="mobileNumber" required allowed-pattern=[0-9] minlength="10" maxlength="10" label="Enter Mobile Number"></paper-input>
-      <paper-input id="emailId" required type="email" label="Email"></paper-input>
-      <paper-input id="panNumber"  required  label="PAN Number"></paper-input>
-      <smart-accordion>
+
       <div slot="summary">Credit Card/Debit Card</div>
       <ul>
         <form class="credit-card">
@@ -195,11 +188,10 @@ ul{
           </div>
         </form>
       </ul>
-    </smart-accordion>
+   
     <span> <paper-button type="submit"  on-click="_handleSubmit" raised class="proceed-btn">Proceed</paper-button>
     </span>
-      </form>
-      </iron-form>
+   
   <paper-dialog id="modal">
   <paper-dialog-scrollable>
   <form id="donationDetails">
@@ -235,16 +227,8 @@ ul{
     }
     _handleSubmit(){
       this.$.modal.open();
-      // const schemeId=sessionStorage.getItem('schemeId');
-      const userName=this.$.donarName.value;
-      const emailId=this.$.emailId.value;
-      const mobileNumber=this.$.mobileNumber.value;
-      const panNumber=this.$.panNumber.value;
-      // const postObj={schemeId,userName,emailId,mobileNumber,panNumber}
-      console.log(this.postObj);
-      // this.$.ajax.userId=sessionStorage.getItem('userId');
-      // this.$.ajax._makeAjaxCall('post',`http://10.117.189.28:8085/hothoagies/users/${sessionStorage.getItem('userId')}/order`,this.postObj,'payments')  
-      // this.set('route.path','/order-summary')
+      const postObj= JSON.parse(sessionStorage.getItem('donarDetails'))
+      console.log(postObj);
     }
     ready() {
       super.ready();
