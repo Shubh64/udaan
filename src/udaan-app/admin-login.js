@@ -18,13 +18,9 @@ class AdminLogin extends PolymerElement {
           background:url(../../images/donation.jpg);
           overflow:hidden;
           background-size:100% 100%;
-          height:79vh;
+          height:85vh;
           scoll: hidden;
         }
-        paper-toast {
-            width: 300px;
-            margin-left: calc(80vw - 150px);
-          } 
      #form
        {
       background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
