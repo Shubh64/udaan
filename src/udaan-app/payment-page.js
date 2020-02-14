@@ -56,7 +56,7 @@ h2{
 }
 #donationDetails{
   width:500px;
-  height:400px;
+  height:420px;
 }
 a{
   text-decoration:none
@@ -65,6 +65,7 @@ a{
   <app-location route={{route}}></app-location>
   <ajax-call id="ajax"></ajax-call>
     <div id="cardDetails">
+    <h3>Enter Card Details</h3>
             <!-- Card Number -->
             <gold-cc-input auto-validate id="card" label="Card number" error-message="Enter valid visa or mastercard!" card-types='["visa", "mastercard"]' required>
         </gold-cc-input>
