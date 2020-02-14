@@ -62,6 +62,11 @@ return html`
    background:orange;
    float:right;
   }
+  #back
+  {
+      margin-top:10px;
+   background:orange;
+  }
   #main-container
   {
       display:grid;
@@ -93,6 +98,7 @@ return html`
     <paper-input id="mail" label="Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
         <iron-icon icon="mail" slot="prefix"></iron-icon>
     </paper-input>
+    <paper-button raised on-click="_handleBack" id="back">Previous</paper-button>
     <paper-button raised on-click="_handleNext" id="next">Next</paper-button>
 </form>
 </iron-form>
@@ -140,6 +146,11 @@ _handleNext()
     sessionStorage.setItem('donorDetails',JSON.stringify(postObj))
     // this.set('route.path','/payment')
     window.history.pushState({}, null, '#/payment');
+    window.dispatchEvent(new CustomEvent('location-changed'));
+}
+_handleBack()
+{
+    window.history.pushState({}, null, '#/udaan-schemes');
     window.dispatchEvent(new CustomEvent('location-changed'));
 }
 }

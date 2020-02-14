@@ -1,4 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-button/paper-button.js';
 import 'highcharts-chart/highcharts-chart.js';
 import './exporting-dependency';
 import './ajax-call.js';
@@ -12,9 +13,16 @@ class AdminHome extends PolymerElement {
       <style>
         :host {
           display: block;
+          overflow:hidden;
+        }
+        #logOut
+        {
+          background:orange;
+          float:right;
         }
       </style>
       <ajax-call id="ajax"></ajax-call>
+      <paper-button id="logOut" on-click="_logOut" raised>Logout</paper-button>
       <highcharts-chart type="pie" data={{data}} x-label={{xLabel}} color-by-point=true x-axis={{category}} title="Scheme Statistics" legend=true plot-options="{{plotOptions}}" export=true></highcharts-chart>
     `;
   }
@@ -65,6 +73,12 @@ class AdminHome extends PolymerElement {
   {
       super.connectedCallback();
       this.$.ajax._makeAjaxCall('get', `${baseUrl}/udaan/admin`, null, 'ajaxResponse')
+  }
+  _logOut()
+  {
+    sessionStorage.clear();
+    window.history.pushState({}, null, '#/login');
+    window.dispatchEvent(new CustomEvent('location-changed'));
   }
   _chartData(event)
   {

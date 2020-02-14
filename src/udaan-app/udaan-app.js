@@ -81,6 +81,20 @@ class UdaanApp extends PolymerElement {
     {
       background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
       font-size:24px;
+      display:flex;
+      justify-content:space-between;
+    }
+    #admin
+    {
+      float:right;
+      color:white;
+      text-decoration:none;
+      cursor:pointer;
+    }
+    #home
+    {
+      text-decoration:none;
+      cursor:pointer;
     }
     </style>
       <app-location id="location" url-space-regex="^[[rootPath]]" route="{{route}}" use-hash-as-path></app-location>
@@ -102,7 +116,8 @@ class UdaanApp extends PolymerElement {
       <app-toolbar class="heading">
         <paper-icon-button class="menu-button" icon="menu" drawer-toggle hidden$="{{wideLayout}}">
         </paper-icon-button>
-        <span class="heading-title">Udaan</span>
+        <a href="#[[rootPath]]udaan-schemes" id="home"><span class="heading-title">Udaan</span></a>
+        <a href="#[[rootPath]]login" id="admin">Admin?</a>
       </app-toolbar>
         <!-- Nav on desktop: tabs -->
         <nav class="tabs-bar" hidden$="{{!wideLayout}}">
@@ -142,7 +157,7 @@ class UdaanApp extends PolymerElement {
       items: {
         type: Array,
         value: function () {
-          return [{ label: 'Udaan-schemes', route: 'udaan-schemes' },{ label: 'Donation-details', route: 'donation-details' }, { label: 'Payment', route: 'payment' },{ label: 'Admin-login', route: 'login' },{ label: 'Admin-home', route: 'admin-home' }]
+          return []
         }
       }
     };
