@@ -78,7 +78,7 @@ class AdminLogin extends PolymerElement {
     const mobileNumber = parseInt(this.$.mobileNumber.value);
     const password=this.$.password.value;
     let postObj={mobileNumber,password}
-    this.$.ajax._makeAjaxCall('post',`http://10.117.189.28:9090/udaan/admin/login`,postObj,'ajaxResponse')  
+    this.$.ajax._makeAjaxCall('post',`${baseUrl}/udaan/admin/login`,postObj,'ajaxResponse')  
     }
     else{
       this.message='Enter Valid UserName or password'

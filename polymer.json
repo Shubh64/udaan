@@ -10,7 +10,6 @@
     "src/udaan-app/exporting-dependency.js",
     "src/udaan-app/high-chart.js",
     "src/udaan-app/payment-page.js",
-    "src/udaan-app/smart-accordion.js",
     "src/udaan-app/udaan-app.js",
     "src/udaan-app/udaan-schemes.js"
   ],
@@ -18,7 +17,6 @@
    "src/**/*",
    "manifest/**",
    "images/**/*",
-   "config.html",
    "package.json"
   ],
   "extraDependencies": [

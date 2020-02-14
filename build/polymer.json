@@ -1,0 +1,110 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src\\udaan-app\\udaan-app.js",
+  "fragments": [
+    "src/udaan-app/admin-home.js",
+    "src/udaan-app/admin-login.js",
+    "src/udaan-app/ajax-call.js",
+    "src/udaan-app/donation-details.js",
+    "src/udaan-app/error-view.js",
+    "src/udaan-app/exporting-dependency.js",
+    "src/udaan-app/high-chart.js",
+    "src/udaan-app/payment-page.js",
+    "src/udaan-app/udaan-app.js",
+    "src/udaan-app/udaan-schemes.js"
+  ],
+  "sources": [
+    "src/**/*",
+    "manifest/**",
+    "images/**/*",
+    "package.json",
+    "index.html",
+    "src/udaan-app/udaan-app.js",
+    "src/udaan-app/admin-home.js",
+    "src/udaan-app/admin-login.js",
+    "src/udaan-app/ajax-call.js",
+    "src/udaan-app/donation-details.js",
+    "src/udaan-app/error-view.js",
+    "src/udaan-app/exporting-dependency.js",
+    "src/udaan-app/high-chart.js",
+    "src/udaan-app/payment-page.js",
+    "src/udaan-app/udaan-app.js",
+    "src/udaan-app/udaan-schemes.js"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**"
+  ],
+  "builds": [
+    {
+      "name": "es5prod",
+      "js": {
+        "minify": true,
+        "compile": "es5",
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true,
+      "addPushManifest": false,
+      "preset": "es5-bundled"
+    },
+    {
+      "name": "es6prod",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
+      "js": {
+        "minify": true,
+        "compile": "es2015",
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": true,
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
+    },
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
+      "js": {
+        "minify": true,
+        "compile": "es2015",
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true,
+      "addPushManifest": false,
+      "preset": "es6-bundled"
+    }
+  ],
+  "lint": {
+    "rules": [
+      "polymer-3"
+    ]
+  },
+  "npm": true,
+  "componentDir": "node_modules/",
+  "moduleResolution": "node"
+}

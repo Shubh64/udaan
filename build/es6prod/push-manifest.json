@@ -1,0 +1,12 @@
+{
+  "src/udaan-app/udaan-app.js": {},
+  "src/udaan-app/admin-home.js": {},
+  "src/udaan-app/admin-login.js": {},
+  "src/udaan-app/ajax-call.js": {},
+  "src/udaan-app/donation-details.js": {},
+  "src/udaan-app/error-view.js": {},
+  "src/udaan-app/exporting-dependency.js": {},
+  "src/udaan-app/high-chart.js": {},
+  "src/udaan-app/payment-page.js": {},
+  "src/udaan-app/udaan-schemes.js": {}
+}

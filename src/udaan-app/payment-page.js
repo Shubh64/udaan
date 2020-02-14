@@ -84,9 +84,9 @@ a{
   <h2>ThankYou for giving Wings to some Dreams</h2>
   <h3>Your Donation Details are:</h3>
   <ul>
+      <li>Donar Name:{{userName}}</li>
       <li>Scheme Name:{{schemeName}}</li>
       <li>Scheme Amount:{{schemeAmount}}</li>
-      <li>Donar Name:{{userName}}</li>
       <li>Email-Id:{{emailId}}</li>
       <li>MobileNo.:{{mobileNumber}}</li>
       <li>PAN Card No.:{{panNumber}}</li>
