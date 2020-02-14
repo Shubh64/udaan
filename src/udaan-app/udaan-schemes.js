@@ -135,47 +135,50 @@ class UdaanSchemes extends PolymerElement {
                     schemeAmount: 5600
                 }]
             },
-            selected:{
-                type:Number,
-                value:0
+            selected: {
+                type: Number,
+                value: 0
             }
         };
     }
-    connectedCallback()
-    {
+    ready() {
+        super.ready();
+        this.addEventListener('ajax-response', (e) => this._getAmount(e))
+    }
+    connectedCallback() {
         super.connectedCallback();
-        this.$.ajax._makeAjaxCall('get', `http://10.117.189.245:9090/udaan/schemes`, postObj, 'ajaxResponse')
+        this.$.ajax._makeAjaxCall('get', `${baseUrl}/udaan/schemes`, null, 'ajaxResponse')
+    }
+    _getAmount(event)
+    {
+        console.log(event.detail.data)
+        this.amount=event.detail.data
     }
     /**
      * 
      * @event {click} adds active class to the selected amount and removes 
      * active class from the Previously selected amount
      */
-    setActive(event)
-    {
-        let id=event.model.item.schemeId
+    setActive(event) {
+        let id = event.model.item.schemeId
         let navs = this.shadowRoot.querySelectorAll('ul li')
-        for (let i = 0; i < navs.length; i++) 
-        {
-            if(navs[i].id==id)
-            {
-                
+        for (let i = 0; i < navs.length; i++) {
+            if (navs[i].id == id) {
+
                 navs[i].classList.add('active')
-                this.selected=id;
+                this.selected = id;
             }
-            else
-            {
-            navs[i].classList.remove('active')
+            else {
+                navs[i].classList.remove('active')
             }
         }
     }
     /**
      * @description Routes to the donation-details page on the basis of the scheme chosen
      */
-    _handleNext()
-    {
-        sessionStorage.setItem('schemeId',this.selected)
-        this.set('route.path','/donation-details');
+    _handleNext() {
+        sessionStorage.setItem('schemeId', this.selected)
+        this.set('route.path', '/donation-details');
     }
 }
 
