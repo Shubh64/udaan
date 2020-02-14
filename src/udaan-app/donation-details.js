@@ -27,7 +27,7 @@ return html`
   {
       width:400px;
       min-height:400px;
-      margin-left:100px;
+      
       margin-top:30px;
       padding:10px;
       border-radius:10px;
@@ -38,7 +38,7 @@ return html`
   {
       width:400px;
       min-height:400px;
-      margin-left:100px;
+      margin-left:50px;
       margin-top:30px;
       padding:10px;
       border-radius:10px;

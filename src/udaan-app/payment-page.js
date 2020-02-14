@@ -1,5 +1,4 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import './smart-accordion.js/index.js';
 import '@polymer/paper-input/paper-input.js';
 import '@polymer/paper-button/paper-button.js';
 import './ajax-call.js';
@@ -120,7 +119,7 @@ a{
       this.postObj= JSON.parse(sessionStorage.getItem('donorDetails'))
       this.postObj.creditCardNumber=this.$.card.value;
       console.log(this.postObj);
-      this.$.ajax._makeAjaxCall('post', `http://10.117.189.245:9090/udaan/users`, this.postObj, 'ajaxResponse')
+      this.$.ajax._makeAjaxCall('post', `${baseUrl}/udaan/users`, this.postObj, 'ajaxResponse')
 
     }
     ready() {
