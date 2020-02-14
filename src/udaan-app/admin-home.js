@@ -74,8 +74,10 @@ for(i = 0; i < obj.length; i++){
     obj[i].name = obj[i]['schemeName'];
     obj[i].y=obj[i]['count'];
     delete obj[i].schemeName;
-    delete obj[i].y;
+    delete obj[i].count;
 }
+console.log(obj)
+this.data=obj;
   }
 }
 
