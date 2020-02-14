@@ -23,6 +23,7 @@ import '@polymer/font-roboto/roboto.js';
  * @customElement
  * @polymer
  */
+setRootPath(MyAppGlobals.rootPath)
 class UdaanApp extends PolymerElement {
   static get template() {
     return html`
