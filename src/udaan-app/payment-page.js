@@ -95,7 +95,7 @@ a{
   </paper-dialog-scrollable>
   <paper-button  raised dialog-dismiss>ok</paper-button>
   <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/email"><paper-button  raised >Send Email</paper-button></a>
-  <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/download"><paper-button  raised >Download</paper-button></a>
+  <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/download" download="payment details.pdf"><paper-button  raised >Download</paper-button></a>
 </paper-dialog>
     `;
   }
