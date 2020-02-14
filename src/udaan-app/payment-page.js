@@ -1,5 +1,5 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import './smart-accordian.js';
+import './smart-accordion.js';
 import '@polymer/paper-input/paper-input.js';
 import '@polymer/paper-button/paper-button.js';
 import './ajax-call.js';
@@ -93,7 +93,7 @@ a{
   </ul>
   </form>
   </paper-dialog-scrollable>
-  <paper-button  raised dialog-dismiss>ok</paper-button>
+  <paper-button  raised dialog-dismiss>Cancel</paper-button>
   <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/email"><paper-button  raised >Send Email</paper-button></a>
   <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/download" download="payment details.pdf"><paper-button  raised >Download</paper-button></a>
 </paper-dialog>
