@@ -1,0 +1,7 @@
+{
+  "name": "udaan",
+  "short_name": "udaan",
+  "description": "udaan",
+  "start_url": "/",
+  "display": "standalone"
+}
