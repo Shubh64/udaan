@@ -90,13 +90,13 @@ return html`
 <div class="container2">
 <iron-form id="form">
 <form>
-    <paper-input label="Full name" id="fullName" required allowed-pattern="[a-zA-Z]" 
+    <paper-input label="Full name" id="fullName" required allowed-pattern="[a-zA-Z ]" 
     error-message="Please Enter Your First name"></paper-input>
     <paper-input label="Pan Number" type="text" maxlength="10" id="panNo" required allowed-pattern="[0-9a-zA-Z]" 
     error-message="Please Enter Your Pan Number"></paper-input>
     <paper-input label="Mobile No." id="mobile" required type="text" allowed-pattern="[0-9]" char-counter maxlength="10"
         error-message="Please Enter Mobile No."></paper-input>
-    <paper-input id="mail" label="Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
+    <paper-input id="mail" label="Email" required pattern="[^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$]" 
     error-message="Email does not matched the required format">
         <iron-icon icon="mail" slot="prefix"></iron-icon>
     </paper-input>
