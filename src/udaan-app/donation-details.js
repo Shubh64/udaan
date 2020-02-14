@@ -2,6 +2,7 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-input/paper-input.js';
 import '@polymer/iron-form/iron-form.js';
 import '@polymer/paper-button/paper-button.js';
+import '@polymer/app-route/app-location.js';
 import './ajax-call.js';
 /**
 * @customElement
@@ -69,14 +70,15 @@ return html`
   }
 </style>
 <ajax-call id="ajax"></ajax-call>
+<app-location route="{{route}}"></app-location>
 <div id="main-container">
 <div class="container">
 <h2>You have chosen {{details.schemeName}} scheme</h2>
 <ul>
 <li>Scheme Amount: {{details.schemeAmount}}</li>
 <li>Description: {{details.description}}</li>
-<li>Tax Benefit: {{details.taxBenefit}}</li>
-<li>Tax Benefit Amount: {{details.taxBenefitAmount}}</li>
+<li>Tax Benefit: {{details.taxBenefit}}%</li>
+<li>Tax Benefit Amount:Rs.{{details.taxBenefitAmount}}</li>
 </ul>
       </div>
 <div class="container2">
@@ -84,7 +86,7 @@ return html`
 <form>
     <paper-input label="Full name" id="fullName" required allowed-pattern="[a-zA-Z]" 
     error-message="Please Enter Your First name"></paper-input>
-    <paper-input label="Pan Number" id="panNo" required allowed-pattern="[0-9]" 
+    <paper-input label="Pan Number" id="panNo" required allowed-pattern="[0-9a-zA-Z]" 
     error-message="Please Enter Your Pan Number"></paper-input>
     <paper-input label="Mobile No." id="mobile" required type="number" char-counter maxlength="10"
         error-message="Please Enter Mobile No."></paper-input>
@@ -136,7 +138,7 @@ _handleNext()
     let mail=this.$.mail.value;
     let postObj={fullName,mobile,panNo,mail,schemeId:this.schemeId};
     sessionStorage.setItem('donorDetails',JSON.stringify(postObj))
-    this.set('route.path','/payment-page')
+    this.set('route.path','/payment')
 }
 }
 
