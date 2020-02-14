@@ -17,7 +17,7 @@ return html`
     padding:0px;
     margin:0px;
     box-sizing:border-box;
-    height:76vh;
+    height:85vh;
     overflow-y: hidden;
     background-size:cover;
     background-repeat:no-repeat;
@@ -27,7 +27,7 @@ return html`
   {
       width:400px;
       min-height:400px;
-      margin-left:100px;
+      
       margin-top:30px;
       padding:10px;
       border-radius:10px;
@@ -38,7 +38,7 @@ return html`
   {
       width:400px;
       min-height:400px;
-      margin-left:100px;
+      margin-left:50px;
       margin-top:30px;
       padding:10px;
       border-radius:10px;
@@ -69,7 +69,8 @@ return html`
   }
   #main-container
   {
-      display:grid;
+      display:flex;
+      justify-content:space-around;
       grid-template-columns:700px auto;
       grid-template-areas:"g1 g2"
   }
@@ -89,13 +90,14 @@ return html`
 <div class="container2">
 <iron-form id="form">
 <form>
-    <paper-input label="Full name" id="fullName" required allowed-pattern="[a-zA-Z]" 
+    <paper-input label="Full name" id="fullName" required allowed-pattern="[a-zA-Z ]" 
     error-message="Please Enter Your First name"></paper-input>
-    <paper-input label="Pan Number" id="panNo" required allowed-pattern="[0-9a-zA-Z]" 
+    <paper-input label="Pan Number" type="text" maxlength="10" id="panNo" required allowed-pattern="[0-9a-zA-Z]" 
     error-message="Please Enter Your Pan Number"></paper-input>
     <paper-input label="Mobile No." id="mobile" required type="text" allowed-pattern="[0-9]" char-counter maxlength="10"
         error-message="Please Enter Mobile No."></paper-input>
-    <paper-input id="mail" label="Email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+    <paper-input id="mail" label="Email" required pattern="[^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$]" 
+    error-message="Email does not matched the required format">
         <iron-icon icon="mail" slot="prefix"></iron-icon>
     </paper-input>
     <paper-button raised on-click="_handleBack" id="back">Previous</paper-button>
@@ -137,16 +139,19 @@ _schemeDetails(event)
 }
 _handleNext()
 {
+    if(this.$.form.validate())
+    {
     this.schemeId=sessionStorage.getItem('schemeId')
     let userName=this.$.fullName.value;
     let panNumber=this.$.panNo.value;
     let mobileNumber=this.$.mobile.value;
     let emailId=this.$.mail.value;
-    let postObj={userName,mobileNumber,mobileNumber,emailId,schemeId:this.schemeId};
+    let postObj={userName,mobileNumber,panNumber,emailId,schemeId:this.schemeId};
     sessionStorage.setItem('donorDetails',JSON.stringify(postObj))
     // this.set('route.path','/payment')
     window.history.pushState({}, null, '#/payment');
     window.dispatchEvent(new CustomEvent('location-changed'));
+    }
 }
 _handleBack()
 {

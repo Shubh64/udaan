@@ -15,7 +15,7 @@ class UdaanSchemes extends PolymerElement {
           padding:0px;
           margin:0px;
           box-sizing:border-box;
-          height:76vh;
+          height:84vh;
           overflow-y: hidden;
           background-size:cover;
           background-repeat:no-repeat;
