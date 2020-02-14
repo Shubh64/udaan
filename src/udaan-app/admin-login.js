@@ -103,7 +103,6 @@ class AdminLogin extends PolymerElement {
       this.$.form.validate()
       if(event.detail.data.statusCode=='200'){
       sessionStorage.setItem('isLogin',true);
-      sessionStorage.setItem('userName',data.name);
     //   this.set('route.path','admin-home')
       window.history.pushState({}, null, '#/admin-home');
       window.dispatchEvent(new CustomEvent('location-changed'));

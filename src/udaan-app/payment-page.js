@@ -123,10 +123,6 @@ a{
       this.$.ajax._makeAjaxCall('post', `http://10.117.189.245:9090/udaan/users`, this.postObj, 'ajaxResponse')
 
     }
-    connectedCallback(){
-      super.connectedCallback();
-      this.userId=sessionStorage.getItem('userId')
-    }
     ready() {
       super.ready();
       this.addEventListener('ajax-response', (e) => this._payments(e))
@@ -140,6 +136,7 @@ a{
         this.mobileNumber=event.detail.data.mobileNumber
         this.panNumber=event.detail.data.panNumber
         this.taxBenefitAmount=event.detail.data.taxBenefit
+        this.userId=event.detail.data.userId
        this.$.modal.open();
     }
 
