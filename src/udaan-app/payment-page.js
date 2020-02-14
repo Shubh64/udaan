@@ -120,7 +120,7 @@ a{
       this.postObj= JSON.parse(sessionStorage.getItem('donorDetails'))
       this.postObj.creditCardNumber=this.$.card.value;
       console.log(this.postObj);
-      this.$.ajax._makeAjaxCall('post', `http://10.117.189.245:9090/udaan/users`, this.postObj, 'ajaxResponse')
+      this.$.ajax._makeAjaxCall('post', `http://10.117.189.176:9090/udaan/users`, this.postObj, 'ajaxResponse')
 
     }
     ready() {
