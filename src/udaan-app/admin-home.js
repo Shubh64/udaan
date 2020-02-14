@@ -1,5 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-
+import 'highcharts-chart/highcharts-chart.js';
+import './exporting-dependency';
 /**
  * @customElement
  * @polymer
@@ -12,15 +13,45 @@ class AdminHome extends PolymerElement {
           display: block;
         }
       </style>
-      <h2>Hello [[prop1]]!</h2>
+      <highcharts-chart type="pie" data={{data}} x-label={{xLabel}} color-by-point=true x-axis={{category}} title="Scheme Statistics" legend=true plot-options="{{plotOptions}}" export=true></highcharts-chart>
     `;
   }
   static get properties() {
     return {
-      prop1: {
-        type: String,
-        value: 'admin-home'
-      }
+        data: {
+            type: Array,
+            value: [
+                {
+                    name: "Nirvana",
+                    y: 2000
+                },
+                {
+                    name: "Crucial",
+                    y: 500
+                },
+                {
+                    name: "Save Child",
+                    y: 800
+                },
+                {
+                    name: "Save Daughter",
+                    y: 1000
+                }
+            ]
+        },
+        xLabel:{
+            type:String,
+            value:'Name'
+        },
+        category:{
+            type:Object,
+            value:{
+                categories: [
+                'Abhi',
+                'ABC'
+                ],
+                crosshair:true
+        }}
     };
   }
 }

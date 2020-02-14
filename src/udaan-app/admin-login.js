@@ -16,10 +16,15 @@ class AdminLogin extends PolymerElement {
         :host {
           display: block;
           background:url(../../images/donation.jpg);
-          overflow-y:hidden;
+          overflow:hidden;
           background-size:100% 100%;
           height:79vh;
+          scoll: hidden;
         }
+        paper-toast {
+            width: 300px;
+            margin-left: calc(80vw - 150px);
+          } 
      #form
        {
       background: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
@@ -39,7 +44,9 @@ class AdminLogin extends PolymerElement {
     }
       </style>
       <app-location route={{route}}></app-location>
+
       <paper-toast text={{message}} id="toast"></paper-toast>
+      
       <ajax-call id="ajax"></ajax-call>
       <iron-form id="form">
       <form>

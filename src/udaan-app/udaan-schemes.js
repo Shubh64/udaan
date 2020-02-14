@@ -94,7 +94,7 @@ class UdaanSchemes extends PolymerElement {
             text-align:center;
         }
       </style>
-      <app-location route="{{route}}"></app-location>
+      <app-location id="location" route="{{route}}"></app-location>
       <ajax-call id="ajax"></ajax-call>
       <div class="container">
           <h1>The first month of a child’s life is the most important.</h1>
@@ -160,6 +160,7 @@ class UdaanSchemes extends PolymerElement {
      * active class from the Previously selected amount
      */
     setActive(event) {
+        console.log('abhinav')
         let id = event.model.item.schemeId
         let navs = this.shadowRoot.querySelectorAll('ul li')
         for (let i = 0; i < navs.length; i++) {
