@@ -1,6 +1,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import 'highcharts-chart/highcharts-chart.js';
 import './exporting-dependency';
+import './ajax-call.js';
 /**
  * @customElement
  * @polymer
@@ -13,6 +14,7 @@ class AdminHome extends PolymerElement {
           display: block;
         }
       </style>
+      <ajax-call id="ajax"></ajax-call>
       <highcharts-chart type="pie" data={{data}} x-label={{xLabel}} color-by-point=true x-axis={{category}} title="Scheme Statistics" legend=true plot-options="{{plotOptions}}" export=true></highcharts-chart>
     `;
   }
@@ -53,6 +55,27 @@ class AdminHome extends PolymerElement {
                 crosshair:true
         }}
     };
+  }
+  ready()
+  {
+      super.ready();
+      this.addEventListener('ajax-response', (e) => this._chartData(e))
+  }
+  connectedCallback()
+  {
+      super.connectedCallback();
+      this.$.ajax._makeAjaxCall('get', `${baseUrl}/udaan/admin`, null, 'ajaxResponse')
+  }
+  _chartData(event)
+  {
+      let obj=event.detail.data.schemeList
+      let i;
+for(i = 0; i < obj.length; i++){
+    obj[i].name = obj[i]['schemeName'];
+    obj[i].y=obj[i]['count'];
+    delete obj[i].schemeName;
+    delete obj[i].y;
+}
   }
 }
 

@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+  <script src="../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../node_modules/@polymer/test-fixture/test-fixture.js"></script>
+  <script src="../../node_modules/mocha/mocha.js"></script>
+  <script src="../../node_modules/chai/chai.js"></script>
+  <script src="../../node_modules/sinon/pkg/sinon.js"></script>
+  <script src="../../node_modules/wct-mocha/wct-mocha.js"></script>
+  <script type="module" src="../../src/udaan-app/donation-details.js"></script>
+  <link rel="import" href="../../config.html">
+</head>
+
+<body>
+  <test-fixture id="donationDetails">
+    <template>
+      <donation-details></donation-details>
+    </template>
+  </test-fixture>
+  <script>
+    describe('Donation Details Page', function () {
+      var element = fixture('donationDetails');
+      var elementShadowRoot = element.shadowRoot;
+      describe('When the component is rendered', function () {
+        beforeEach(function () {
+          element = fixture('donationDetails');
+          elementShadowRoot = element.shadowRoot;
+        });
+        it('should render the component', function () {
+          expect(element).to.be.exist;
+          expect(elementShadowRoot).to.be.exist;
+        });
+        it('should render app-location', () => {
+          let appLocation = element.$.location
+          expect(appLocation.route).to.equal(element.route)
+        });
+        describe('When the next button is clicked',()=>{
+            let next;
+          let handleNext;
+          beforeEach(() => {
+            next = elementShadowRoot.querySelector('#next');
+            handleNext = sinon.spy();
+            next.addEventListener('click', handleNext);
+          });
+          afterEach(() => {
+            sinon.restore();
+          });
+          it('should call handleNext method once', function () {
+              next.click();
+              expect(handleNext.callCount).to.be.equal(1)
+            })
+        })
+        describe('When the amount is selected',()=>{
+            let amount;
+          let setActive;
+          beforeEach((done) => {
+              flush(function()
+              {
+                amount = elementShadowRoot.querySelector('li');
+            setActive = sinon.spy();
+            amount.addEventListener('click', setActive);
+            done();
+              })
+
+          });
+          afterEach(() => {
+            sinon.restore();
+          });
+          it('should call handleNext method once', function () {
+            amount.click();
+              expect(setActive.callCount).to.be.equal(1)
+            })
+        })
+        describe('ready must listen for custom-event', () => {
+          let getAmount;
+          beforeEach(() => {
+            getAmount = sinon.spy();
+            element.addEventListener('ajax-response', (e) => getAmount(e))
+            var selectionFired = new CustomEvent("ajax-response", {
+              "detail": { "data":  [{
+                    "schemeId": 1,
+                    "schemeAmount": 1000
+                },
+                {
+                    "schemeId": 2,
+                    "schemeAmount": 2000
+                },
+                {
+                    "schemeId": 3,
+                    "schemeAmount": 3500
+                },
+                {
+                    "schemeId": 4,
+                    "schemeAmount": 5600
+                }] }
+            });
+            element.dispatchEvent(selectionFired)
+          })
+          it('should call _getAmount() once', () => {
+            expect(getAmount.callCount).to.be.equal(1)
+          })
+        })
+    });
+    });
+  </script>
+</body>
+
+</html>
