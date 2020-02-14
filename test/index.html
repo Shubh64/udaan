@@ -20,12 +20,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../node_modules/mocha/mocha.js"></script>
   <script src="../node_modules/chai/chai.js"></script>
   <script src="../node_modules/wct-mocha/wct-mocha.js"></script>
+  
 </head>
 <body>
   <script>
+    
     WCT.loadSuites([
       // Load 'my-view1.html' test suite, using native shadow dom
-      './udaan-app/donation-details_test.html?dom=shadow'
+      './udaan-app/donation-details_test.html?dom=shadow',
+      './udaan-app/udaan-app_test.html?dom=shadow',
+      './udaan-app/admin-login_test.html?dom=shadow',
+      // Load 'my-view1.html' test suite, using shadydom,
+      './udaan-app/udaan-schemes_test.html?dom=shadow'
       // Load 'my-view1.html' test suite, using shadydom
       // 'my-view1.html?wc-shadydom=true',
     ]);
