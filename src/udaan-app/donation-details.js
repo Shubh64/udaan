@@ -96,7 +96,7 @@ return html`
     error-message="Please Enter Your Pan Number"></paper-input>
     <paper-input label="Mobile No." id="mobile" required type="text" allowed-pattern="[0-9]" char-counter maxlength="10"
         error-message="Please Enter Mobile No."></paper-input>
-    <paper-input id="mail" label="Email" required pattern="[^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$]" 
+    <paper-input id="mail" label="Email" required pattern="[^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$]" 
     error-message="Email does not matched the required format">
         <iron-icon icon="mail" slot="prefix"></iron-icon>
     </paper-input>
