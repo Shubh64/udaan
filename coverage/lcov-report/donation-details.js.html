@@ -24,7 +24,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -45,7 +45,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -200,7 +200,9 @@
 <a name='L142'></a><a href='#L142'>142</a>
 <a name='L143'></a><a href='#L143'>143</a>
 <a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -214,6 +216,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">2x</span>
+=======
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -305,6 +311,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">2x</span>
+=======
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -321,26 +331,52 @@
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+=======
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+=======
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+=======
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<<<<<<< HEAD
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+=======
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -478,13 +514,15 @@ _schemeDetails(event)
 _handleNext()
 {
     this.schemeId=sessionStorage.getItem('schemeId')
-    let fullName=this.$.fullName.value;
-    let panNo=this.$.panNo.value;
-    let mobile=this.$.mobile.value;
-    let mail=this.$.mail.value;
-    let postObj={fullName,mobile,panNo,mail,schemeId:this.schemeId};
+    let userName=this.$.fullName.value;
+    let panNumber=this.$.panNo.value;
+    let mobileNumber=this.$.mobile.value;
+    let emailId=this.$.mail.value;
+    let postObj={userName,mobileNumber,mobileNumber,emailId,schemeId:this.schemeId};
     sessionStorage.setItem('donorDetails',JSON.stringify(postObj))
-    this.set('route.path','/payment')
+    // this.set('route.path','/payment')
+    window.history.pushState({}, null, '#/payment');
+    window.dispatchEvent(new CustomEvent('location-changed'));
 }
 }
 &nbsp;
@@ -495,7 +533,11 @@ window.customElements.define('donation-details', DonationDetails);</pre></td></t
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
+<<<<<<< HEAD
                 at Fri Feb 14 2020 18:05:57 GMT+0530 (India Standard Time)
+=======
+                at Fri Feb 14 2020 18:11:20 GMT+0530 (India Standard Time)
+>>>>>>> 97c3615a21762b995c4e03db078a1644237c4568
             </div>
         </div>
         <script src="prettify.js"></script>

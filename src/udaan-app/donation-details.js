@@ -132,13 +132,15 @@ _schemeDetails(event)
 _handleNext()
 {
     this.schemeId=sessionStorage.getItem('schemeId')
-    let fullName=this.$.fullName.value;
-    let panNo=this.$.panNo.value;
-    let mobile=this.$.mobile.value;
-    let mail=this.$.mail.value;
-    let postObj={fullName,mobile,panNo,mail,schemeId:this.schemeId};
+    let userName=this.$.fullName.value;
+    let panNumber=this.$.panNo.value;
+    let mobileNumber=this.$.mobile.value;
+    let emailId=this.$.mail.value;
+    let postObj={userName,mobileNumber,mobileNumber,emailId,schemeId:this.schemeId};
     sessionStorage.setItem('donorDetails',JSON.stringify(postObj))
-    this.set('route.path','/payment')
+    // this.set('route.path','/payment')
+    window.history.pushState({}, null, '#/payment');
+    window.dispatchEvent(new CustomEvent('location-changed'));
 }
 }
 
