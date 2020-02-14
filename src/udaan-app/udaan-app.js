@@ -83,7 +83,7 @@ class UdaanApp extends PolymerElement {
       font-size:24px;
     }
     </style>
-      <app-location id="location" route="{{route}}"></app-location>
+      <app-location id="location" url-space-regex="^[[rootPath]]" route="{{route}}" use-hash-as-path></app-location>
 <app-route route="{{route}}" data="{{routeData}}" pattern="[[rootPath]]:page" tail="{{subRoute}}"></app-route>
 <app-drawer-layout force-narrow>
   <app-drawer id="drawer" slot="drawer">
@@ -91,7 +91,7 @@ class UdaanApp extends PolymerElement {
     <!-- Nav on mobile: side nav menu -->
     <paper-listbox selected="[[page]]" attr-for-selected="name">
       <template is="dom-repeat" items="{{items}}">
-      <a href="[[rootPath]]{{item.route}}" class="link">
+      <a href="#[[rootPath]]{{item.route}}" class="link">
         <paper-item name$="{{item.route}}">{{item.label}}</paper-item>
         </a>
       </template>
@@ -108,7 +108,7 @@ class UdaanApp extends PolymerElement {
         <nav class="tabs-bar" hidden$="{{!wideLayout}}">
           <template is="dom-repeat" items="{{items}}">
           <ul>
-        <li><a href="[[rootPath]]{{item.route}}">{{item.label}}</a></li>
+        <li><a href="#[[rootPath]]{{item.route}}">{{item.label}}</a></li>
          </ul>
           </template>
          </nav>

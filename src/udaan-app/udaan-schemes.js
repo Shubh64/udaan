@@ -179,7 +179,9 @@ class UdaanSchemes extends PolymerElement {
      */
     _handleNext() {
         sessionStorage.setItem('schemeId', this.selected)
-        this.set('route.path', '/donation-details');
+        // this.set('route.path', '/donation-details');
+        window.history.pushState({}, null, '#/donation-details');
+        window.dispatchEvent(new CustomEvent('location-changed'));
     }
 }
 
