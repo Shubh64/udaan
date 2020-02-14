@@ -51,20 +51,22 @@ span{
  margin-top: 10px;
  justify-content: center;
 }
-ul{
-  font-size:16px;
-  font-weight:lighter;
+h2{
+  color:green;
 }
 #donationDetails{
   width:500px;
   height:500px;
+}
+a{
+  text-decoration:none
 }
   </style>
   <app-location route={{route}}></app-location>
   <ajax-call id="ajax"></ajax-call>
     <div id="cardDetails">
             <!-- Card Number -->
-            <gold-cc-input auto-validate label="Card number" error-message="Enter valid visa or mastercard!" card-types='["visa", "mastercard"]' required>
+            <gold-cc-input auto-validate id="card" label="Card number" error-message="Enter valid visa or mastercard!" card-types='["visa", "mastercard"]' required>
         </gold-cc-input>
 
             <!-- Date Field -->
@@ -78,7 +80,8 @@ ul{
   <paper-dialog id="modal">
   <paper-dialog-scrollable>
   <form id="donationDetails">
-  <h2>Your Donation Details are:
+  <h2>ThankYou for giving Wings to some Dreams</h2>
+  <h3>Your Donation Details are:</h3>
   <ul>
       <li>Scheme Name:{{schemeName}}</li>
       <li>Scheme Amount:{{schemeAmount}}</li>
@@ -91,8 +94,8 @@ ul{
   </form>
   </paper-dialog-scrollable>
   <paper-button  raised dialog-dismiss>ok</paper-button>
-  <paper-button  raised on-click="_sendEmail">Send Email</paper-button>
-  <paper-button  raised on-click="_download">Download</paper-button>
+  <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/email"><paper-button  raised >Send Email</paper-button></a>
+  <a href="http://10.117.189.176:9090/udaan/users/{{userId}}/download"><paper-button  raised >Download</paper-button></a>
 </paper-dialog>
     `;
   }
@@ -105,36 +108,41 @@ ul{
       mobileNumber:String,
       panNumber:String,
       taxBenefitAmount:String,
-      statusCode:String
+      statusCode:String,
+      userId:Number,
+      postObj:{
+        type:Object,
+        value:{}
+      }
       };
     }
     _handleSubmit(){
-      this.$.modal.open();
-      const postObj= JSON.parse(sessionStorage.getItem('donarDetails'))
-      console.log(postObj);
+      this.postObj= JSON.parse(sessionStorage.getItem('donorDetails'))
+      this.postObj.creditCardNumber=this.$.card.value;
+      console.log(this.postObj);
+      this.$.ajax._makeAjaxCall('post', `http://10.117.189.245:9090/udaan/users`, this.postObj, 'ajaxResponse')
+
+    }
+    connectedCallback(){
+      super.connectedCallback();
+      this.userId=sessionStorage.getItem('userId')
     }
     ready() {
       super.ready();
-      this.addEventListener('payments', (e) => this._payments(e))
+      this.addEventListener('ajax-response', (e) => this._payments(e))
     }
     _payments(event){
       console.log(event.detail.data)
-        this.orderId=event.detail.data.orderId;
         this.schemeName=event.detail.data.schemeName;
         this.schemeAmount=event.detail.data.schemeAmount
         this.userName=event.detail.data.userName
         this.emailId=event.detail.data.emailId
         this.mobileNumber=event.detail.data.mobileNumber
         this.panNumber=event.detail.data.panNumber
-        this.taxBenefitAmount=event.detail.data.taxBenefitAmount
+        this.taxBenefitAmount=event.detail.data.taxBenefit
        this.$.modal.open();
     }
-    _download(){
-      console.log('in download')
-    }
-    _sendEmail(){
-      console.log('in email')
-    }
+
   }
 
 window.customElements.define('payment-page', PaymentPage);

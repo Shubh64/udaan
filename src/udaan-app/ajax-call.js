@@ -47,14 +47,6 @@ class AjaxCall extends PolymerElement {
     //All the response has been handled through switch case by dispatching event details to the parent
     switch (this.action) {
       case 'ajaxResponse': this.dispatchEvent(new CustomEvent('ajax-response', { bubbles: true, composed: true, detail: { data , loading: true} }))
-      break;
-      case 'payments': 
-   {  // this._makeAjaxCall('post',`http://10.117.189.28:8085/hothoagies/users/${sessionStorage.getItem('userId')}/order`,this.postObj,'viewDetails')  
-    }
-    case 'viewDetails': 
-    {  // this._makeAjaxCall('post',`http://10.117.189.28:8085/hothoagies/users/${sessionStorage.getItem('userId')}/order`,this.postObj,'')  
-     this.dispatchEvent(new CustomEvent('payments', { bubbles: true, composed: true, detail: { data , loading: true} }))
-     }
     break;
       default:
     }
