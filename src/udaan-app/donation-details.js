@@ -69,7 +69,8 @@ return html`
   }
   #main-container
   {
-      display:grid;
+      display:flex;
+      justify-content:space-around;
       grid-template-columns:700px auto;
       grid-template-areas:"g1 g2"
   }
