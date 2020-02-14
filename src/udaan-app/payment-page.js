@@ -139,7 +139,7 @@ a{
         this.emailId=event.detail.data.emailId
         this.mobileNumber=event.detail.data.mobileNumber
         this.panNumber=event.detail.data.panNumber
-        this.taxBenefitAmount=event.detail.data.taxBenefit
+        this.taxBenefitAmount=event.detail.data.taxBenefit;
        this.$.modal.open();
     }
 
